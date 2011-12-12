@@ -1,0 +1,33 @@
+.list {
+  background: #eee;
+}
+
+.list .head-row {
+  background: #666;
+}
+
+.list .head-column {
+  float: left;
+  padding: 0 5px;
+  font-size: .9em;
+  line-height: 1.3em; 
+  border-right: 1px solid #aaa;
+  color: #eee;
+  font-weight: bold;
+  text-align: center;
+}
+
+.list .head-column.last {
+  border-right: 0;
+}
+
+.list .cell {
+  float: left;
+  padding: 0 5px;
+  font-size: .75em;
+  line-height: 1.2em; 
+}
+
+.clear-both { clear: both; }
+
+

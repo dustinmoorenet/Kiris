@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  company: MyString
+  amount: 1.5
+  calories: 1.5
+  fat_calories: 1.5
+  food_group: 
+  unit: 
+
+two:
+  name: MyString
+  company: MyString
+  amount: 1.5
+  calories: 1.5
+  fat_calories: 1.5
+  food_group: 
+  unit: 

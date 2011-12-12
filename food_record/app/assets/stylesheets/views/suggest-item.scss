@@ -1,0 +1,46 @@
+$height: 20px;
+$icon-margin: $height - 16;
+
+.app-view-suggest-item {
+  padding-left: 5px;
+  font-size: .8em;
+  line-height: $height;
+  height: $height;
+  background: #fff;
+  color: rgba(0,0,0,.75);
+  cursor: pointer;
+  position: relative;
+
+  &.selected {
+    background: #eee;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    margin: $icon-margin / 2;
+    float: left;
+    background: #fff;
+  }
+
+  &.food .icon {
+    background: url('/assets/icons.png') 0px -16px;
+  }
+
+  &.filter .icon {
+    background: url('/assets/icons.png') 0px -32px;
+  }
+
+  &.company .icon {
+    background: url('/assets/icons.png') 0px -48px;
+  }
+
+  &.food-group .icon {
+    background: url('/assets/icons.png') 0px -64px;
+  }
+
+  .text {
+    line-height: $height;
+    float: left;
+  }
+}

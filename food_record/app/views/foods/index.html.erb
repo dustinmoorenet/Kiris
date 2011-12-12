@@ -1,0 +1,41 @@
+<h1>Foods</h1>
+
+<style>
+.list .col-0 { width: 200px; }
+.list .col-1 { width: 120px; }
+.list .col-2 { width: 150px; }
+.list .col-3 { width: 150px; }
+</style>
+
+<ul class="page-menu">
+  <li><%= link_to 'New Food', new_food_path %></li>
+</ul>
+<div class="clear-both"></div>
+<div class="list">
+  <div class="head-row">
+    <div class="head-column col-0">Name</div>
+    <div class="head-column col-1">Company</div>
+    <div class="head-column col-2">Food Group</div>
+    <div class="head-column col-3"></div>
+    <div class="clear-both"></div>
+  </div>
+
+<% row_num = 0 %>
+<% @foods.each do |food| %>
+  <div class="row row-<%= row_num %>">
+    <div class="cell col-0"><%= food.name %></div>
+    <div class="cell col-1"><%= food.company %>&nbsp;</div>
+    <div class="cell col-2"><%= food.food_group.name %>&nbsp;</div>
+    <div class="cell col-3">
+      <%= link_to 'Show', food %>
+      <%= link_to 'Edit', edit_food_path(food) %>
+      <%= link_to 'Destroy', food, confirm: 'Are you sure?', method: :delete %>
+    </div>
+    <div class="clear-both"></div>
+  </div>
+<%   row_num += 1 %>
+<% end %>
+</div>
+
+<br />
+

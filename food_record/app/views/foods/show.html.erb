@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+
+<ul class="page-menu">
+  <li><%= link_to 'Edit', edit_food_path(@food) %></li>
+  <li><%= link_to 'Back', foods_path %></li>
+</ul>
+
+<section class="model-display">
+<h2><%= @food.name %> <span class="food-group">(<%= @food.food_group.name %>)<span></h2>
+<div class="field">
+  <label>Company</label>
+  <span><%= @food.company %></span>
+</div>
+
+<div class="field">
+  <label>Amount</label>
+  <span><%= "%.8g" % @food.amount %> <%= @food.unit.name %></span>
+</div>
+
+<div class="field">
+  <label>Calories</label>
+  <span><%= "%.8g" % @food.calories %></span>
+</div>
+
+<div class="field">
+  <label>Fat Calories</label>
+  <span><%= "%.8g" % @food.fat_calories %></span>
+</div>
+
+</section>

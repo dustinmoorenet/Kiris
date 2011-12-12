@@ -1,0 +1,41 @@
+/* line 1, ../../../app/assets/stylesheets/views/unified-search.scss */
+.app-view-unified-search {
+  background: #222;
+}
+/* line 4, ../../../app/assets/stylesheets/views/unified-search.scss */
+.app-view-unified-search .filter-inputs {
+  background: #444;
+}
+/* line 7, ../../../app/assets/stylesheets/views/unified-search.scss */
+.app-view-unified-search .filter-inputs .food-group {
+  background: #666;
+}
+/* line 9, ../../../app/assets/stylesheets/views/unified-search.scss */
+.app-view-unified-search .filter-inputs .food-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 15, ../../../app/assets/stylesheets/views/unified-search.scss */
+.app-view-unified-search .filter-inputs .food-group input {
+  display: none;
+}
+/* line 19, ../../../app/assets/stylesheets/views/unified-search.scss */
+.app-view-unified-search .filter-inputs .food-group li {
+  height: 20px;
+}
+/* line 26, ../../../app/assets/stylesheets/views/unified-search.scss */
+.app-view-unified-search .filter-inputs .food-group li .check-box {
+  float: left;
+  border: 1px solid #333333;
+  margin: 2px;
+  height: 14px;
+  width: 14px;
+  background: #eee;
+}
+/* line 35, ../../../app/assets/stylesheets/views/unified-search.scss */
+.app-view-unified-search .filter-inputs .food-group li .label {
+  float: left;
+  line-height: 20px;
+  font-size: 12px;
+}

@@ -1,0 +1,114 @@
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/opacity";
+
+$height: 30px;
+$icon-margin: $height - 16;
+
+.app-view-suggest-input {
+  @include border-radius(6px, 6px);
+  height: $height;
+  line-height: $height;
+  border: 1px solid rgba(0,0,0,.3);
+  display: inline-block;
+  padding-right: 10px;
+  margin-right: 10px;
+
+  .drop-down {
+    width: 300px;
+    max-height: 185px;
+    overflow: auto;
+    display: none;
+    clear: both;
+    background: #fff;
+    z-index: 400;
+
+    @include single-box-shadow(rgba(0,0,0,.3), 0, 2px, 2px);
+  }
+
+  label {
+    display: none;
+    line-height: $height;
+    float:left;
+  }
+
+  input {
+    border: 0;
+    height: $height - 8;
+    line-height: $height - 8;
+    margin: 4px 0;
+    float:left;
+    background: rgba(0,0,0,0);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.add {
+    cursor: pointer;
+    background: rgba(0,255,0,.3);
+
+    .icon {
+      margin: 0 10px 0 0;
+    }
+
+    label {
+      font-weight: bold;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  &.hasFocus {
+    @include single-box-shadow(rgba(255, 186, 0, .5), 0px, 0px, 5px, 0px, inset);
+    border-color: rgba(255, 186, 0, .5);
+  }
+
+  &.compact {
+    border: 1px solid rgba(0,0,0,.3);
+    background: rgba(0,0,255,.3);
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+
+    label {
+      display: inline;
+      cursor: pointer;
+    }
+  }
+
+  .icon {
+    height: 16px;
+    margin: $icon-margin / 2;
+    display: inline-block;
+    float:left;
+  }
+
+  &.food .icon {
+    width: 16px;
+    background: url('/assets/icons.png') 0px -16px;
+  }
+
+  &.filter .icon {
+    width: 16px;
+    background: url('/assets/icons.png') 0px -32px;
+  }
+
+  &.company .icon {
+    width: 16px;
+    background: url('/assets/icons.png') 0px -48px;
+  }
+
+  &.food-group .icon {
+    width: 16px;
+    background: url('/assets/icons.png') 0px -64px;
+  }
+
+}

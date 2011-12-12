@@ -1,0 +1,103 @@
+.app-view-nav {
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.10);
+  height: 30px;
+  background: -moz-linear-gradient(top, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0.5) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(0,0,0,0.5))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(0,0,0,0.5) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(0,0,0,0.5) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(0,0,0,0.5) 100%); /* IE10+ */
+  background: linear-gradient(top, rgba(255,255,255,0.5) 0%,rgba(0,0,0,0.5) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80ffffff', endColorstr='#80000000',GradientType=0 ); /* IE6-9 */
+}
+
+.app-view-nav .title {
+  text-transform: uppercase;
+  float: left;
+  line-height: 30px;
+  padding: 0px 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: rgba(0,0,0,.50);
+  text-shadow: -1px 1px 1px rgba(255,255,255,.5);
+  cursor: default;
+}
+
+.inline-nav {
+  float: left;
+}
+
+.inline-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inline-nav li {
+  display: inline;
+  line-height: 30px;
+  padding: 0 5px;
+  margin: 0;
+  text-transform: lowercase;
+  border-right: solid 1px rgba(0,0,0,.5);
+  color: rgba(0,0,0,.70);
+  text-shadow: -1px 1px 1px rgba(255,255,255,.5);
+}
+
+.inline-nav li:last-child {
+  border-right: 0;
+}
+
+.inline-nav li:hover {
+  text-shadow: -1px 1px 1px rgba(255,255,255,.9);
+  cursor: pointer;
+}
+
+.dropdown-nav {
+  float: right;
+  padding-right: 10px;
+  position: relative;
+}
+
+.dropdown-nav label {
+  line-height: 30px;
+  color: rgba(0,0,0,.70);
+  text-shadow: -1px 1px 1px rgba(255,255,255,.5);
+  padding-left: 5px;
+}
+
+.dropdown-nav label:hover {
+  text-shadow: -1px 1px 1px rgba(255,255,255,.9);
+  cursor: pointer;
+}
+
+.dropdown-nav ul {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: solid 1px rgba(0,0,0,.30);
+  border-top: 0;
+  box-shadow: -1px 1px 2px rgba(0,0,0,.30);
+}
+
+.dropdown-nav li {
+  background: rgba(255,255,255,.90);
+  line-height: 30px;
+  border-bottom: solid 1px rgba(0,0,0,.20);
+  padding: 0px 10px;
+  text-transform: lowercase;
+  font-size: .9em;
+}
+
+.dropdown-nav li:last-child {
+  border-bottom: 0;
+}
+
+.dropdown-nav li:hover {
+  background: rgba(255,255,255,.70);
+  cursor: pointer;
+}

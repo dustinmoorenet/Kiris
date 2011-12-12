@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kiris</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <script>
+      App.Data = {
+        FoodGroups: new App.Collection.FoodGroups(<%= raw(FoodGroup.all.to_json) %>),
+        Units: new App.Collection.Units(<%= raw(Unit.all.to_json) %>)
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

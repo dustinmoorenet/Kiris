@@ -1,0 +1,80 @@
+.app-view-food-panel {
+  background: rgba(255,255,255,.90);
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.app-view-food-panel img {
+  float: left;
+  padding-right: 10px;
+}
+
+.app-view-food-panel .info {
+  float: left;
+}
+
+.app-view-food-panel .expand-section {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.app-view-food-panel .expand-section.collapsed {
+  overflow: hidden;
+  height: 125px;
+}
+
+.app-view-food-panel .expand-section-button {
+  display: none;
+  background: rgba(0,0,0,.20);
+  height: 20px;
+}
+
+.app-view-food-panel .expand-section-button:hover {
+  background: rgba(0,0,0,.10);
+  cursor: pointer;
+}
+
+.app-view-food-panel .info header {
+  font-size: 2em;
+  font-weight: bold;
+  color: rgba(0,0,0,.80);
+}
+
+.app-view-food-panel .info header small {
+  font-size: .7em;
+  margin-left: 30px;
+  color: rgba(0,0,0,.60);
+}
+
+
+.app-view-food-panel .info label {
+  display: block;
+  width: 200px;
+  color: rgba(0,0,0,.60);
+  background: rgba(0,0,0,.20);
+  font-size: .9em;
+  font-weight: bold;
+  padding-left: 10px;
+}
+
+.app-view-food-panel .info .row {
+  color: rgba(0,0,0,.40);
+  font-size: .7em;
+  border-bottom: 1px solid rgba(0,0,0,.60);
+  line-height: 1.5em;
+  padding-left: 5px;
+}
+
+.app-view-food-panel .info .row.empty {
+  text-align: center;
+}
+
+.app-view-food-panel .info .nutrients {
+  float: left;
+  margin-right: 20px;
+}
+
+.app-view-food-panel .info .products {
+  float: left;
+}
+
