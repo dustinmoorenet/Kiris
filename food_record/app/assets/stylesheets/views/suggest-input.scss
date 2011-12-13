@@ -13,6 +13,8 @@ $icon-margin: $height - 16;
   display: inline-block;
   padding-right: 10px;
   margin-right: 10px;
+  position: relative;
+  cursor: text;
 
   .drop-down {
     width: 300px;
@@ -30,19 +32,37 @@ $icon-margin: $height - 16;
     display: none;
     line-height: $height;
     float:left;
+    cursor: text;
   }
 
   input {
+    width: 150px;
     border: 0;
     height: $height - 8;
     line-height: $height - 8;
     margin: 4px 0;
     float:left;
     background: rgba(0,0,0,0);
+    z-index: 20;
 
     &:focus {
       outline: none;
     }
+  }
+
+  .suggest-field {
+    position: absolute;
+    width: 150px;
+    height: $height - 8;
+    line-height: $height - 8;
+    margin: 4px 0;
+    right: 0;
+    z-index: 19;
+    cursor: text;
+  }
+
+  .close {
+    display: none;
   }
 
   &.add {
@@ -62,6 +82,11 @@ $icon-margin: $height - 16;
     input {
       display: none;
     }
+
+    .suggest-field {
+      display: none;
+    }
+
   }
 
   &.hasFocus {
@@ -74,13 +99,32 @@ $icon-margin: $height - 16;
     background: rgba(0,0,255,.3);
     cursor: pointer;
 
+    label {
+      display: inline;
+      cursor: pointer;
+      margin-right: 16px;
+    }
+
     input {
       display: none;
     }
 
-    label {
-      display: inline;
-      cursor: pointer;
+    .suggest-field {
+      display: none;
+    }
+
+    .close {
+      position: absolute;
+      right: 0;
+      display: block;
+      margin: $icon-margin / 2;
+      width: 16px;
+      height: 16px;
+      background: url('/assets/icons.png') 0px -80px;
+
+      &:hover {
+        @include opacity(0.75);
+      }
     }
   }
 

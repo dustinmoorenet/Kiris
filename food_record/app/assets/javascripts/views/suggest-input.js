@@ -6,7 +6,8 @@ App.View.SuggestInput = Backbone.View.extend({
     'mouseover .app-view-suggest-item': 'onMouseover',
     'blur input': 'itemSelected',
     'focus input': 'inputFocus',
-    'click': 'onClick'
+    'click': 'onClick',
+    'click .close': 'destroy'
   },
 
   tagName: 'div',
@@ -18,14 +19,25 @@ App.View.SuggestInput = Backbone.View.extend({
   },
 
   render: function() {
-
     $(this.el).html(JST["templates/views/suggest-input"]());
+  },
 
+  destroy: function() {
+    $(this.el).addClass('destroyed').trigger('searchInitiated').remove();
   },
 
   onClick: function() {
     if ($(this.el).hasClass('add')) {
       $(this.el).removeClass('add').find('label').html('');
+      this.$('input').focus();
+
+    } else if ($(this.el).hasClass('compact')) {
+      $(this.el).removeClass('compact')
+                .find('input').focus();
+
+      this.$('label').html('');
+
+    } else {
       this.$('input').focus();
     }
   },
@@ -54,11 +66,6 @@ App.View.SuggestInput = Backbone.View.extend({
 
 
       $(this.el).bind('click', function() {
-        $(this).unbind('click', arguments.callee)
-               .removeClass('compact')
-               .find('input').focus();
-
-        this.$('label').html('');
       });
     }
   },

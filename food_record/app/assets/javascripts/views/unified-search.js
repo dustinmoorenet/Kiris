@@ -25,6 +25,11 @@ App.View.UnifiedSearch = Backbone.View.extend({
       var input = new App.View.SuggestInput();
       this.$('.filter-plate').append(input.el);
     }
+
+    var $inputs = this.$('.app-view-suggest-input:not(.destroyed)');
+    if ($inputs.length == 1 && $inputs.filter('.add').length == 1) {
+      $inputs.removeClass('add').find('input').focus();
+    }
   },
 
   urlQuestion: function() {
