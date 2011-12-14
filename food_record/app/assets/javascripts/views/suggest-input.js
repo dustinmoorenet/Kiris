@@ -12,7 +12,7 @@ App.View.SuggestInput = Backbone.View.extend({
 
   tagName: 'div',
 
-  className: 'app-view-suggest-input add',
+  className: 'app-view-suggest-input add all',
 
   initialize: function() {
     this.render();
@@ -52,21 +52,32 @@ App.View.SuggestInput = Backbone.View.extend({
     if ($item.length > 0) {
       this.$('input').val($item.text())
                      .data('value', $item.data('value'));
-      $(this.el).addClass($item.data('type'));
+      $(this.el).addClass($item.data('type')).removeClass('all');
     }
     this.$('.drop-down').html('').hide();
+    this.stamp = 0;
 
-    if (this.$('input').val() != '') {
-      this.$('label').text(this.$('input').val());
+    var input_value = this.$('input').val();
+    if (input_value != '') {
+      
+      var matches = input_value.match(/^\s*(Company|Food|FoodGroup):\s*(.*)$/i);
+      if (matches) {
+        var type = matches[1].toLowerCase();
+        if (type == 'foodgroup')
+          type = 'food-group';
+        this.$('input').val(matches[2]);
+        $(this.el).addClass(type).removeClass('all');
+        this.$('label').text(matches[2]);
+
+      } else {
+        this.$('label').text(input_value);
+      }
 
       $(this.el).trigger('searchInitiated');
 
       $(this.el).addClass('compact')
-                .removeClass('hasFocus')
+                .removeClass('hasFocus');
 
-
-      $(this.el).bind('click', function() {
-      });
     }
   },
 
@@ -134,7 +145,7 @@ App.View.SuggestInput = Backbone.View.extend({
       this.stamp = stamp;
 
       $.getJSON('search/unifiedSearch',
-        {value: value, types: ['food', 'food-group', 'company']},
+        {value: value, types: ['food', 'food-group', 'company', 'filter']},
         function(data) {
           if (stamp == self.stamp) {
             $dd.html('');

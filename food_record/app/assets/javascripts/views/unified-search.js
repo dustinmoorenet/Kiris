@@ -35,19 +35,27 @@ App.View.UnifiedSearch = Backbone.View.extend({
   urlQuestion: function() {
     var params = [];
 
-    var $suggest_inputs = this.$('.app-view-suggest-input');
+    var $suggest_inputs = this.$('.app-view-suggest-input:not(.add)');
 
     $suggest_inputs.each(function() {
       var $suggest_input = $(this);
+      var $input = $suggest_input.find('input');
 
       if ($suggest_input.hasClass('food'))
-        params.push('name=' + escape($suggest_input.find('input').val()));
+        params.push('name=' + escape($input.val()));
   
       if ($suggest_input.hasClass('company'))
-        params.push('company_name=' + escape($suggest_input.find('input').val()));
+        params.push('company_name=' + escape($input.val()));
   
-      if ($suggest_input.hasClass('food-group'))
-        params.push('food_group_id[]=' + escape($suggest_input.find('input').data('value')));
+      if ($suggest_input.hasClass('food-group')) {
+        if ($input.data('value'))
+          params.push('food_group_id[]=' + escape($input.data('value')));
+        else
+          params.push('food_group_name=' + escape($input.val()));
+      }
+
+      if ($suggest_input.hasClass('all'))
+        params.push('all=' + escape($input.val()));
   
     });
     return params.length > 0 ? '?' + params.join('&') : ''

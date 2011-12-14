@@ -12,6 +12,7 @@ class Food < ActiveRecord::Base
     indexes products.name, :as => :product_name, :sortable => true
     indexes nutrients.name, :as => :nutrient_name, :sortable => true
     indexes food_group.id, :as => :food_group_id, :sortable => true
+    indexes food_group.name, :as => :food_group_name, :sortable => true
 
     has unit_id, created_at, calories, fat_calories
   end

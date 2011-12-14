@@ -1,6 +1,6 @@
 <img src="http://dummyimage.com/100x125/000/fff" />
 <section class="info">
-  <header><%= food.name %><small><%= food.company %></small></header>
+  <header><%= food.name %><small><%= food.company.name %> (<%= App.Data.FoodGroups.get(food.food_group_id).get('name') %>)</small></header>
   <div class="expand-section">
     <div class="nutrients">
       <label>Nurtients</label>

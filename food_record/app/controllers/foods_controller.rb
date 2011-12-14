@@ -16,13 +16,22 @@ class FoodsController < ApplicationController
       conditions[:food_group_id] = params[:food_group_id].join(' | ')
     end
 
-    if conditions.length > 0
+    search = ''
+    if params[:all]
+      search = params[:all]
+    end
+
+    if conditions.length > 0 && search != ''
+      foods = Food.search search, :conditions => conditions, :star => true
+    elsif conditions.length == 0 && search != ''
+      foods = Food.search search, :star => true
+    elsif conditions.length > 0 && search == ''
       foods = Food.search :conditions => conditions, :star => true
     else
       foods = []
     end
 
-    render :json => foods.to_json( :include => [ :products, :nutrients ] )
+    render :json => foods.to_json( :include => [ :products, :nutrients, :company ] )
   end
 
   # GET /foods/1
