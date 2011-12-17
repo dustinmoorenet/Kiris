@@ -1,5 +1,7 @@
 .bundle
 db/*.sqlite3
 log/*.log
+log/*.pid
 tmp/
+db/sphinx/
 .sass-cache/

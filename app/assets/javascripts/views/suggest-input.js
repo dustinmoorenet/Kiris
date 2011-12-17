@@ -145,7 +145,7 @@ App.View.SuggestInput = Backbone.View.extend({
       this.stamp = stamp;
 
       $.getJSON('search/unifiedSearch',
-        {value: value, types: ['food', 'food-group', 'company', 'filter']},
+        {value: value, types: ['food', 'food-group', 'company']},
         function(data) {
           if (stamp == self.stamp) {
             $dd.html('');

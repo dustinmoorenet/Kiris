@@ -14,8 +14,21 @@ App.View.Main = Backbone.View.extend({
 
     var $div = $('<div class="app-view-main"></div>');
     $div.html(nav.el);
-    $div.append(search.el);
+    $div.append('<div class="panel"></div>');
 
     $(this.el).html($div);
+    this.$('.panel').html(search.el);
+  },
+
+  showSearch: function() {
+    var search = new App.View.Search();
+    this.$('.panel').html(search.el);
+  },
+
+  showEdit: function(type, id) {
+    if (type == 'food')
+      var input = new App.View.FoodInput({id: id});
+
+    this.$('.panel').html(input.el);
   }
 });

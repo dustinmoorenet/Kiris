@@ -8,8 +8,12 @@ class FoodsController < ApplicationController
       conditions[:name] = params[:name]
     end
 
-    if params[:company] && params[:company] != ''
-      conditions[:company] = params[:company]
+    if params[:company_name] && params[:company_name] != ''
+      conditions[:company_name] = params[:company_name]
+    end
+
+    if params[:food_group_name] && params[:food_group_name] != ''
+      conditions[:food_group_name] = params[:food_group_name]
     end
 
     if params[:food_group_id]

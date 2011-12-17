@@ -1,12 +1,12 @@
 .app-view-search {
   padding: 10px;
-}
 
-.app-view-search .unified-search {
-  text-align: center;
-  padding-bottom: 20px;
-}
-
-.app-view-search .results {
-  min-height: 500px;
+  .unified-search {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  
+  .results {
+    min-height: 500px;
+  }
 }

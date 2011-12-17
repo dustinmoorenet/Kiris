@@ -35,7 +35,7 @@ App.View.UnifiedSearch = Backbone.View.extend({
   urlQuestion: function() {
     var params = [];
 
-    var $suggest_inputs = this.$('.app-view-suggest-input:not(.add)');
+    var $suggest_inputs = this.$('.app-view-suggest-input:not(.add,.destroyed)');
 
     $suggest_inputs.each(function() {
       var $suggest_input = $(this);
