@@ -1,0 +1,15 @@
+sudo rm -rf Kiris
+sudo git clone git://github.com/dustinmoorenet/Kiris.git
+cd Kiris
+rvmsudo RAILS_ENV=production bundle pack
+rvmsudo RAILS_ENV=production bundle install --path vendor/cache
+rvmsudo RAILS_ENV=production bundle exec rake assets:precompile
+rvmsudo RAILS_ENV=production rake thinking_sphinx:rebuild
+
+
+
+rvmsudo RAILS_ENV=production rails server
+
+rvmsudo RAILS_ENV=production rake db:load
+
+rvmsudo rvm install 1.9.2 --with-zlib-dir=$rvm_path/usr --with-openssl-dir=$rvm_path/usr
