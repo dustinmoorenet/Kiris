@@ -1,8 +1,8 @@
 App.Model.Food = Backbone.Model.extend({
-  urlRoot: 'foods'
+  urlRoot: App.url('foods')
 });
 
 App.Collection.Foods = Backbone.Collection.extend({
   model: App.Model.Food,
-  url: 'foods'
+  url: App.url('foods')
 });

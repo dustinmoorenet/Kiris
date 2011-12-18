@@ -1,8 +1,8 @@
 App.Model.Product = Backbone.Model.extend({
-  urlRoot: 'products'
+  urlRoot: App.url('products')
 });
 
 App.Collection.Products = Backbone.Collection.extend({
   model: App.Model.Product,
-  url: 'products'
+  url: App.url('products')
 });

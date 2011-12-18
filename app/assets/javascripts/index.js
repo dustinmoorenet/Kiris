@@ -2,7 +2,10 @@ var App = {
   Router: {},
   Model: {},
   Collection: {},
-  View: {}
+  View: {},
+  url: function(location) {
+    return window.location.pathname + location;
+  }
 }
 
 $(function() {
