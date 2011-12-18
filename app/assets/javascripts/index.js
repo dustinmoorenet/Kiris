@@ -4,7 +4,10 @@ var App = {
   Collection: {},
   View: {},
   url: function(location) {
-    return window.location.pathname + location;
+    if (window.location.pathname == '/')
+      return location;
+    else
+      return window.location.pathname + '/' + location;
   }
 }
 
