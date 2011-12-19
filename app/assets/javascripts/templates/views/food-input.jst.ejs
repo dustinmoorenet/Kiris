@@ -1,2 +1,17 @@
-<label for="name">Name:</label><input name="name" />
-<label for="company">Company:</label><input name="company" />
+<h2>Food <%= food.isNew() ? 'Add' : 'Edit' %></h2>
+<label for="name">Name</label><input id="name" /><br />
+<label for="company">Company</label><input id="company" /><br />
+<label for="amount">Amount</label><input id="amount" />
+<select id="unit">
+<% App.Data.Units.each(function(unit) { %>
+  <option value="<%= unit.id %>"><%= unit.get('abbv') %></option>
+<% }); %>
+</select><br />
+<label for="calories">Calories</label><input id="calories" /><br />
+<label for="fat_calories">Fat Calories</label><input id="fat_calories" /><br />
+<label for="food_group">Food Group</label><select id="food_group">
+<% App.Data.FoodGroups.each(function(food_group) { %>
+  <option value="<%= food_group.id %>"><%= food_group.get('name') %></option>
+<% }); %>
+</select><br />
+<input type="button" class="commit" value="Create" />

@@ -5,3 +5,4 @@ log/*.pid
 tmp/
 db/sphinx/
 .sass-cache/
+*.swp

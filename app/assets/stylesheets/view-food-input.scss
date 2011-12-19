@@ -1,4 +1,69 @@
+@import 'compass/css3/box-shadow';
+@import 'compass/css3/text-shadow';
+@import 'compass/css3/border-radius';
+
 .app-view-food-input {
-  padding: 10px;
   min-height: 500px;
+  width: 500px;
+  margin: 10px auto;
+  /*background: rgba(255,255,255,.90);
+  @include border-radius(4px, 4px);*/
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    color: rgba(0,0,0,.75);
+  }
+
+  label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: lowercase;
+    color: rgba(0,0,0,.75);
+  }
+
+  input,
+  select {
+    border: 0;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    line-height: 30px;
+    font-size: 1.2em;
+    @include box-shadow(rgba(0,0,0,.5) -1px 1px 3px 0 inset,
+      rgba(255,255,255,.75) 0 1px 0 0);
+    
+    &:focus {
+      @include box-shadow(rgba(255,186,0,1) 0 0 5px 1px inset,
+        rgba(255,255,255,.75) 0px 1px 0 0);
+      outline: none;
+    }
+  }
+
+  select {
+    height: 30px;
+    background: white;
+  }
+
+  input.commit {
+    padding: 0 10px;
+    margin: 0 0 0 30px;
+    @include box-shadow(rgba(0, 0, 0, 0.5) -1px 1px 3px 0);
+
+    &:active {
+      @include box-shadow(rgba(0, 0, 0, 0.5) 0 0 0 0);
+    }
+  }
+
+  #calories,
+  #fat_calories,
+  #amount {
+    width: 75px;
+  }
 }

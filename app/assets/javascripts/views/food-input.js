@@ -14,7 +14,7 @@ App.View.FoodInput = Backbone.View.extend({
   render: function(id) {
     // get food model from id if id exists
 
-    var food = {};
+    var food = new App.Model.Food();
     $(this.el).html(JST['templates/views/food-input']({food:food}));
   }
 });
