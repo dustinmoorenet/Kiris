@@ -3,11 +3,8 @@
 @import "compass/css3/opacity";
 
 .app-view-unified-search {
-  background: rgba(255,255,255,.9);
-  @include border-radius(10px, 10px);
   padding: 5px;
   margin-bottom: 10px;
-  height: 32px;
 
   .filter-plate {
     float: left;

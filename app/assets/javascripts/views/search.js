@@ -32,8 +32,8 @@ App.View.Search = Backbone.View.extend({
       success: function(_foods, _data) {
 
         _.each(_data, function(food) {
-          var food_panel = new App.View.FoodPanel();
-          food_panel.render(food);
+          var food_panel = new App.View.FoodPanel({model: new App.Model.Food(food)});
+          food_panel.render();
           _this.$results.append(food_panel.el);
         });
       }

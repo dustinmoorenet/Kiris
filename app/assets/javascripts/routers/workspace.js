@@ -18,6 +18,6 @@ App.Router.Workspace = Backbone.Router.extend({
   },
 
   edit: function(type, id) {
-    this.main.showEdit(type,id);
+    this.main.showEdit(type, id);
   }
 });

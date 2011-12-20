@@ -1,6 +1,7 @@
 App.View.FoodPanel = Backbone.View.extend({
   events: {
-    'click .expand-section-button': 'toggleExpand'
+    'click .expand-section-button': 'toggleExpand',
+    'dblclick': 'editFood'
   },
 
   tagName: 'div',
@@ -10,8 +11,8 @@ App.View.FoodPanel = Backbone.View.extend({
   initialize: function() {
   },
 
-  render: function(food) {
-    $(this.el).html(JST['templates/views/food-panel']({food: food}));
+  render: function() {
+    $(this.el).html(JST['templates/views/food-panel']({food: this.model}));
     var _this = this;
 
     $(function() {
@@ -24,5 +25,9 @@ App.View.FoodPanel = Backbone.View.extend({
 
   toggleExpand: function() {
     $(this.el).find('.expand-section').toggleClass('collapsed');
+  },
+
+  editFood: function() {
+    App.Globals.Workspace.navigate('edit/food/' + this.model.id, true);
   }
 });

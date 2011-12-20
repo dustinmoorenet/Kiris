@@ -1,12 +1,14 @@
 <img src="http://dummyimage.com/100x125/000/fff" />
 <section class="info">
-  <header><%= food.name %><small><%= food.company.name %> (<%= App.Data.FoodGroups.get(food.food_group_id).get('name') %>)</small></header>
+  <header><%= food.get('name') %>
+    <small><%= food.get('company').name %> (<%= App.Data.FoodGroups.get(food.get('food_group_id')).get('name') %>)</small>
+  </header>
   <div class="expand-section">
     <div class="nutrients">
       <label>Nurtients</label>
       <div>
-<% if (food.nutrients.length > 0) {
-     _.each(food.nutrients, function(nutrient) { %>
+<% if (food.get('nutrients').length > 0) {
+     _.each(food.get('nutrients'), function(nutrient) { %>
         <div class="row"><%= nutrient.name %></div>
 <%   });
    } else { %>
@@ -17,8 +19,8 @@
     <div class="products">
       <label>Products</label>
       <div>
-<% if (food.products.length > 0) {
-     _.each(food.products, function(product) { %>
+<% if (food.get('products').length > 0) {
+     _.each(food.get('products'), function(product) { %>
         <div class="row"><%= product.name %></div>
 <%   });
    } else { %>

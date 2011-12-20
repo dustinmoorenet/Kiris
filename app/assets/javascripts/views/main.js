@@ -1,5 +1,6 @@
 App.View.Main = Backbone.View.extend({
-  routes: {
+  events: {
+    'edit': 'showEdit'
   },
 
   el: 'body',
@@ -26,9 +27,12 @@ App.View.Main = Backbone.View.extend({
   },
 
   showEdit: function(type, id) {
-    if (type == 'food')
-      var input = new App.View.FoodInput({id: id});
+    if (type == 'food') {
+      var model = new App.Model.Food({id: id});
+      var input = new App.View.FoodInput({model: model});
+    }
 
-    this.$('.panel').html(input.el);
+    if (input)
+      this.$('.panel').html(input.el);
   }
 });

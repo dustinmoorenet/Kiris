@@ -1,6 +1,6 @@
 App.View.FoodInput = Backbone.View.extend({
   events: {
-
+    'click .commit': 'commit'
   },
 
   tagName: 'div',
@@ -8,13 +8,27 @@ App.View.FoodInput = Backbone.View.extend({
   className: 'app-view-food-input',
 
   initialize: function() {
-    this.render(this.id);
+    if (this.model.isNew()) {
+      this.render();
+    } else {
+      var self = this;
+      this.model.fetch({success: function() { self.render(); }});
+    }
   },
 
-  render: function(id) {
-    // get food model from id if id exists
+  render: function() {
+    var model = this.model;
+    $(this.el).html(JST['templates/views/food-input']({food:model}));
+    this.$('#name'        ).bind('change', function() { model.set({name:          this.value}); });
+    this.$('#amount'      ).bind('change', function() { model.set({amount:        this.value}); });
+    this.$('#unit'        ).bind('change', function() { model.set({unit_id:       $(this).val()}); });
+    this.$('#calories'    ).bind('change', function() { model.set({calories:      this.value}); });
+    this.$('#fat_calories').bind('change', function() { model.set({fat_calories:  this.value}); });
+    this.$('#food_group'  ).bind('change', function() { model.set({food_group_id: $(this).val()}); });
+  },
 
-    var food = new App.Model.Food();
-    $(this.el).html(JST['templates/views/food-input']({food:food}));
+  commit: function() {
+    var self = this;
+    this.model.save({success: function() { self.render(); }});
   }
 });

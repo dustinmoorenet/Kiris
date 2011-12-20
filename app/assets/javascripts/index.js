@@ -1,4 +1,5 @@
 var App = {
+  Globals: {},
   Router: {},
   Model: {},
   Collection: {},
@@ -12,6 +13,6 @@ var App = {
 }
 
 $(function() {
-  new App.Router.Workspace();
+  App.Globals.Workspace = new App.Router.Workspace();
   Backbone.history.start();
 });
