@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207121318) do
+ActiveRecord::Schema.define(:version => 20111220115809) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20111207121318) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "company_id"
+    t.boolean  "delta",         :default => true, :null => false
   end
 
   add_index "foods", ["food_group_id"], :name => "index_foods_on_food_group_id"

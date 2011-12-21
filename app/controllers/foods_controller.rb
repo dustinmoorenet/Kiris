@@ -58,8 +58,10 @@ class FoodsController < ApplicationController
   def update
     @food = Food.find(params[:id])
 
+    params[:food].delete('id')
+
     if @food.update_attributes(params[:food])
-      head :ok
+      render :json => @food
     else
       render :json => @food.errors, :status => :unprocessable_entity
     end
@@ -70,6 +72,6 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @food.destroy
 
-    head :ok
+    render :json => []
   end
 end

@@ -15,5 +15,7 @@ class Food < ActiveRecord::Base
     indexes food_group.name, :as => :food_group_name, :sortable => true
 
     has unit_id, created_at, calories, fat_calories
+
+    set_property :delta => true
   end
 end

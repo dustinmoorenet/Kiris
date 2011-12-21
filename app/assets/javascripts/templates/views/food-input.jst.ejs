@@ -1,18 +1,34 @@
 <h2>Food <%= food.isNew() ? 'Add' : 'Edit' %></h2>
 <form autocomplete="off">
-  <label for="name">Name</label><input id="name" value="<%= food.get('name') %>" /><br />
-  <label for="company">Company</label><input id="company" value="<%= food.get('company') %>" disabled /><br />
-  <label for="amount">Amount</label><input id="amount" value="<%= food.get('amount') %>" />
-  <select id="unit">
+  <label for="name">Name</label>
+  <input id="name" value="<%= food.escape('name') %>" />
+  <span class="name msg"></span><br />
+
+  <label for="company">Company</label>
+  <input id="company" value="<%= food.escape('company') %>" disabled />
+  <span class="company msg"></span><br />
+
+  <label for="amount">Amount</label>
+  <input type="number" min="1" id="amount" value="<%= food.escape('amount') %>" />
+  <select id="unit_id">
   <% App.Data.Units.each(function(unit) { %>
-    <option value="<%= unit.id %>"<%= food.get('unit_id') == unit.id ? ' selected' : '' %>><%= unit.get('abbv') %></option>
+    <option value="<%= unit.id %>"<%= food.get('unit_id') == unit.id ? ' selected' : '' %>><%= unit.escape('abbv') %></option>
   <% }); %>
-  </select><br />
-  <label for="calories">Calories</label><input id="calories" value="<%= food.get('calories') %>" /><br />
-  <label for="fat_calories">Fat Calories</label><input id="fat_calories" value="<%= food.get('fat_calories') %>" /><br />
-  <label for="food_group">Food Group</label><select id="food_group">
+  </select>
+  <span class="amount msg"></span><br />
+
+  <label for="calories">Calories</label>
+  <input type="number" min="0" id="calories" value="<%= food.escape('calories') %>" />
+  <span class="calories msg"></span><br />
+
+  <label for="fat_calories">Fat Calories</label>
+  <input type="number" min="0" id="fat_calories" value="<%= food.escape('fat_calories') %>" />
+  <span class="fat_calories msg"></span><br />
+
+  <label for="food_group_id">Food Group</label>
+  <select id="food_group_id">
   <% App.Data.FoodGroups.each(function(food_group) { %>
-    <option value="<%= food_group.id %>"<%= food.get('food_group_id') == food_group.id ? ' selected' : '' %>><%= food_group.get('name') %></option>
+    <option value="<%= food_group.id %>"<%= food.get('food_group_id') == food_group.id ? ' selected' : '' %>><%= food_group.escape('name') %></option>
   <% }); %>
   </select><br />
   <input type="button" class="commit" value="<%= food.isNew() ? 'Create' : 'Save' %>" />

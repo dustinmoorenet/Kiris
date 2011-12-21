@@ -1,7 +1,7 @@
 <img src="http://dummyimage.com/100x125/000/fff" />
 <section class="info">
   <header><%= food.get('name') %>
-    <small><%= food.get('company').name %> (<%= App.Data.FoodGroups.get(food.get('food_group_id')).get('name') %>)</small>
+    <small><%= food.get('company') ? food.get('company').name : '' %> (<%= App.Data.FoodGroups.get(food.get('food_group_id')).get('name') %>)</small>
   </header>
   <div class="expand-section">
     <div class="nutrients">
