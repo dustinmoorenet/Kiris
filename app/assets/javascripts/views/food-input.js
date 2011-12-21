@@ -30,11 +30,11 @@ App.View.FoodInput = Backbone.View.extend({
     var self = this;
 
     if (this.checkComplete())
-      this.model.save({success: function() { self.render(); }});
+      this.model.save(null, {success: function() { self.render(); }});
   },
 
   onFocus: function(event) {
-    $(event.target).removeClass('.error');
+    $(event.target).removeClass('error');
   },
 
   onChange: function(event) {

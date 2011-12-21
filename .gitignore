@@ -6,3 +6,4 @@ tmp/
 db/sphinx/
 .sass-cache/
 *.swp
+*.swo
