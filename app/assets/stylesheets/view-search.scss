@@ -1,5 +1,11 @@
+@import "main";
+
 .app-view-search {
   padding: 10px;
+
+  h2 {
+    @include panel-header;
+  }
 
   .unified-search {
     text-align: center;

@@ -12,10 +12,11 @@ App.View.Search = Backbone.View.extend({
   },
 
   render: function() {
+    $(this.el).append(JST['templates/views/search']());   
+
     this.unified_search = new App.View.UnifiedSearch();
 
-    $(this.el).html(this.unified_search.el)
-              .append(JST['templates/views/search']());   
+    this.$('.search-input').html(this.unified_search.el);
 
     this.$results = $(this.el).find('.results');
   },

@@ -1,6 +1,7 @@
 @import 'compass/css3/box-shadow';
 @import 'compass/css3/text-shadow';
 @import 'compass/css3/border-radius';
+@import 'main';
 
 .app-view-food-input {
   min-height: 500px;
@@ -10,12 +11,7 @@
   @include border-radius(4px, 4px);*/
 
   h2 {
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
-    padding: 10px 0;
-    margin-bottom: 10px;
-    color: rgba(0,0,0,.75);
+    @include panel-header;
   }
 
   label {
