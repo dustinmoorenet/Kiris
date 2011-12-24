@@ -4,6 +4,7 @@ rvmsudo RAILS_ENV=production rake thinking_sphinx:stop
 cd ..
 sudo mv Kiris Kiris_bak_#
 sudo git clone git://github.com/dustinmoorenet/Kiris.git
+sudo chown -R apache:apache Kiris
 cd Kiris
 rvmsudo RAILS_ENV=production bundle pack
 rvmsudo RAILS_ENV=production bundle install --path vendor/cache
