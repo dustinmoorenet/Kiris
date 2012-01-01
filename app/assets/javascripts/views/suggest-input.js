@@ -57,7 +57,7 @@ App.View.SuggestInput = Backbone.View.extend({
     this.$('.drop-down').html('').hide();
     this.stamp = 0;
 
-    var input_value = this.$('input').val();
+    var input_value = $.trim(this.$('input').val());
     if (input_value != '') {
       
       var matches = input_value.match(/^\s*(Company|Food|FoodGroup):\s*(.*)$/i);
@@ -138,7 +138,8 @@ App.View.SuggestInput = Backbone.View.extend({
     var key = event.keyCode;
     if (!(key == 40 || key == 38 || key == 13)) {
       var self = this;
-      var value = this.$('input').val();
+      var value = $.trim(this.$('input').val());
+
       var $dd = this.$('.drop-down');
       var stamp = new Date().getTime();
       this.stamp = stamp;

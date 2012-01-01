@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   def unifiedSearch
     results = []
 
-    if (params[:types].nil? == false)
+    if (params[:types].nil? == false && params[:value].strip != '')
       if (params[:types].include?('food'))
         foods = Food.search params[:value], :star => true
 
