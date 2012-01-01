@@ -76,8 +76,8 @@ App.View.SuggestInput = Backbone.View.extend({
       $(this.el).addClass('compact')
                 .removeClass('hasFocus');
 
-      $(this.el).trigger('searchInitiated');
     }
+    $(this.el).trigger('searchInitiated');
   },
 
   inputFocus: function() {
