@@ -73,11 +73,10 @@ App.View.SuggestInput = Backbone.View.extend({
         this.$('label').text(input_value);
       }
 
-      $(this.el).trigger('searchInitiated');
-
       $(this.el).addClass('compact')
                 .removeClass('hasFocus');
 
+      $(this.el).trigger('searchInitiated');
     }
   },
 

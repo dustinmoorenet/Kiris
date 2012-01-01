@@ -21,7 +21,8 @@ App.View.UnifiedSearch = Backbone.View.extend({
 
   appendAddButton: function() {
 
-    if (this.$('.app-view-suggest-input.add').length == 0) {
+    if (this.$('.app-view-suggest-input.add').length == 0
+        && this.$('.app-view-suggest-input input:visible').length == 0) {
       var input = new App.View.SuggestInput();
       this.$('.filter-plate').append(input.el);
     }
