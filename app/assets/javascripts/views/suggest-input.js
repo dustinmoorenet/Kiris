@@ -46,13 +46,13 @@ App.View.SuggestInput = Backbone.View.extend({
     if ($(this.el).hasClass('compact'))
       return;
 
-    $(this.el).removeClass('hasFocus');
+    $(this.el).removeClass('hasFocus food food-group company').addClass('all');
 
     var $item = this.$('.drop-down .selected').removeClass('selected'); 
     if ($item.length > 0) {
       this.$('input').val($item.text())
                      .data('value', $item.data('value'));
-      $(this.el).removeClass('all food food-group company').addClass($item.data('type'));
+      $(this.el).removeClass('all').addClass($item.data('type'));
     }
     this.$('.drop-down').html('').hide();
     this.stamp = 0;
@@ -66,7 +66,7 @@ App.View.SuggestInput = Backbone.View.extend({
         if (type == 'foodgroup')
           type = 'food-group';
         this.$('input').val(matches[2]);
-        $(this.el).removeClass('all food food-group company').addClass(type);
+        $(this.el).removeClass('all').addClass(type);
         this.$('label').text(matches[2]);
 
       } else {

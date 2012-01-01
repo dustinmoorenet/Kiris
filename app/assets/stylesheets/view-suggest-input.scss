@@ -46,22 +46,10 @@ $icon-margin: $height - 16;
     margin: 4px 0;
     float:left;
     background: rgba(0,0,0,0);
-    z-index: 20;
 
     &:focus {
       outline: none;
     }
-  }
-
-  .suggest-field {
-    position: absolute;
-    width: 150px;
-    height: $height - 8;
-    line-height: $height - 8;
-    margin: 4px 0;
-    right: 0;
-    z-index: 19;
-    cursor: text;
   }
 
   .close {
@@ -90,11 +78,6 @@ $icon-margin: $height - 16;
     input {
       display: none;
     }
-
-    .suggest-field {
-      display: none;
-    }
-
   }
 
   &.hasFocus {
@@ -118,10 +101,6 @@ $icon-margin: $height - 16;
     }
 
     input {
-      display: none;
-    }
-
-    .suggest-field {
       display: none;
     }
 
