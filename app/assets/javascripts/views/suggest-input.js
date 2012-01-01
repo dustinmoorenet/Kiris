@@ -52,7 +52,7 @@ App.View.SuggestInput = Backbone.View.extend({
     if ($item.length > 0) {
       this.$('input').val($item.text())
                      .data('value', $item.data('value'));
-      $(this.el).addClass($item.data('type')).removeClass('all');
+      $(this.el).removeClass('all food food-group company').addClass($item.data('type'));
     }
     this.$('.drop-down').html('').hide();
     this.stamp = 0;
@@ -66,7 +66,7 @@ App.View.SuggestInput = Backbone.View.extend({
         if (type == 'foodgroup')
           type = 'food-group';
         this.$('input').val(matches[2]);
-        $(this.el).addClass(type).removeClass('all');
+        $(this.el).removeClass('all food food-group company').addClass(type);
         this.$('label').text(matches[2]);
 
       } else {
