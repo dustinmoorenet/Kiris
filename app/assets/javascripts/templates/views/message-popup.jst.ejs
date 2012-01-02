@@ -1,0 +1,15 @@
+<div class="title" ><%= obj.title %></div>
+<div class="close"></div>
+<div class="message"><%= obj.message %></div>
+<div class="buttons">
+<% if (obj.type == 'alert') { %>
+  <input type="button" class="confirm" value="OK" />
+<% } else if (obj.type == 'confirm') { %>
+  <input type="button" class="confirm" value="Yes" />
+  <input type="button" class="cancel" value="No" />
+<% } else if (obj.type == 'prompt') { %>
+  <input type="button" class="confirm" value="OK" />
+  <input type="button" class="cancel" value="Cancel" />
+<% } else if (obj.type == 'notice') { } %>
+</div>
+

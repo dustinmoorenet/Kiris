@@ -1,0 +1,9 @@
+@import "compass/css3/opacity";
+
+.app-view-barrier {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  @include opacity(0);
+}
