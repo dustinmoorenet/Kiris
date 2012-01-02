@@ -57,6 +57,7 @@ $icon-margin: $height - 16;
   }
 
   &.add {
+    padding: 0;
     cursor: pointer;
     background: rgba(0,255,0,.3);
     @include box-shadow(rgba(0, 0, 0, 0.5) -1px 1px 3px 0);
@@ -66,13 +67,13 @@ $icon-margin: $height - 16;
     }
 
     .icon {
-      margin: 0 10px 0 0;
+      width: 16px;
+      height: 16px;
+      background: url('icons.png') 0px -96px;
     }
 
     label {
-      font-weight: bold;
-      display: inline-block;
-      cursor: pointer;
+      display: none;
     }
 
     input {

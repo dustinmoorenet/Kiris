@@ -29,8 +29,16 @@ App.View.FoodInput = Backbone.View.extend({
   commit: function() {
     var self = this;
 
-    if (this.checkComplete())
-      this.model.save(null, {success: function() { self.render(); }});
+    if (this.checkComplete()) {
+      this.model.save(null, {success: function() {
+        self.render();
+        new App.View.MessagePopup({
+          type: 'notice',
+          title: 'Success',
+          message: 'Food saved successfully.'
+        });
+      }});
+    }
   },
 
   onFocus: function(event) {
