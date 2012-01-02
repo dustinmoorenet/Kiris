@@ -14,6 +14,8 @@ App.View.SuggestInput = Backbone.View.extend({
 
   className: 'app-view-suggest-input add all',
 
+  type: 'all',
+
   initialize: function() {
     this.render();
   },
@@ -50,9 +52,12 @@ App.View.SuggestInput = Backbone.View.extend({
 
     var $item = this.$('.drop-down .selected').removeClass('selected'); 
     if ($item.length > 0) {
+      var type = $item.data('type');
       this.$('input').val($item.text())
                      .data('value', $item.data('value'));
-      $(this.el).removeClass('all').addClass($item.data('type'));
+      $(this.el).removeClass('all')
+                .addClass(type);
+      this.type = type;
     }
     this.$('.drop-down').html('').hide();
     this.stamp = 0;
@@ -66,11 +71,14 @@ App.View.SuggestInput = Backbone.View.extend({
         if (type == 'foodgroup')
           type = 'food-group';
         this.$('input').val(matches[2]);
-        $(this.el).removeClass('all').addClass(type);
+        $(this.el).removeClass('all')
+                  .addClass(type);
+        this.type = type;
         this.$('label').text(matches[2]);
 
       } else {
         this.$('label').text(input_value);
+        $(this.el).addClass(this.type);
       }
 
       $(this.el).addClass('compact')
@@ -139,13 +147,18 @@ App.View.SuggestInput = Backbone.View.extend({
   onKeyUp: function(event) {
     var key = event.keyCode;
     if (!(key == 40 || key == 38 || key == 13)) {
-      var self = this;
+      if (this.type != 'all') {
+        this.type = 'all';
+        $(this.el).removeClass('food food-group company').addClass('all');
+      }
+
       var value = $.trim(this.$('input').val());
 
       var $dd = this.$('.drop-down');
       var stamp = new Date().getTime();
       this.stamp = stamp;
 
+      var self = this;
       $.getJSON(App.url('search/unifiedSearch'),
         {value: value, types: ['food', 'food-group', 'company']},
         function(data) {
