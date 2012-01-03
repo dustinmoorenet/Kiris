@@ -1,17 +1,4 @@
-cd /var/www/Kiris
-sudo /etc/init.d/httpd stop
-rvmsudo RAILS_ENV=production rake thinking_sphinx:stop
-cd ..
-sudo mv Kiris Kiris_bak_#
-sudo git clone git://github.com/dustinmoorenet/Kiris.git
-sudo chown -R apache:apache Kiris
-cd Kiris
-rvmsudo RAILS_ENV=production bundle pack
-rvmsudo RAILS_ENV=production bundle install --path vendor/cache
-rvmsudo RAILS_ENV=production bundle exec rake assets:precompile
-rvmsudo RAILS_ENV=production rake thinking_sphinx:rebuild
-sudo /etc/init.d/httpd start
-
+See build.sh
 
 
 rvmsudo RAILS_ENV=production rails server
