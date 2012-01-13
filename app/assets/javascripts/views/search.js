@@ -14,7 +14,7 @@ App.View.Search = Backbone.View.extend({
   render: function() {
     $(this.el).append(JST['templates/views/search']());   
 
-    this.unified_search = new App.View.UnifiedSearch();
+    this.unified_search = new App.View.UnifiedSearch({url_question: this.options.url_question});
 
     this.$('.search-input').html(this.unified_search.el);
 
@@ -26,7 +26,9 @@ App.View.Search = Backbone.View.extend({
 
     var foods = new App.Collection.Foods();
 
-    foods.url = foods.url + this.unified_search.urlQuestion();
+    var url_question = this.unified_search.urlQuestion();
+    foods.url = foods.url + '?' + url_question;
+    App.Globals.Workspace.navigate('search?' + url_question);
 
     var _this = this;
     foods.fetch({

@@ -2,6 +2,7 @@ App.Router.Workspace = Backbone.Router.extend({
   routes: {
     '': 'index',
     'search': 'search',
+    'search?:url_question': 'search',
     'edit/:type': 'edit',
     'edit/:type/:id': 'edit'
   },
@@ -13,8 +14,8 @@ App.Router.Workspace = Backbone.Router.extend({
   index: function() {
   },
 
-  search: function() {
-    this.main.showSearch();
+  search: function(url_question) {
+    this.main.showSearch(url_question);
   },
 
   edit: function(type, id) {

@@ -22,6 +22,15 @@ App.View.SuggestInput = Backbone.View.extend({
 
   render: function() {
     $(this.el).html(JST["templates/views/suggest-input"]());
+
+    if (this.options.category && this.options.value) {
+      $(this.el).removeClass('add')
+                .addClass(this.options.category)
+                .addClass('compact');
+      this.$('input').val(this.options.value)
+                     .data('value', this.options.data_value);
+      this.$('label').text(this.options.value);
+    }
   },
 
   destroy: function() {

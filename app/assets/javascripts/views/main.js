@@ -21,9 +21,12 @@ App.View.Main = Backbone.View.extend({
     this.$('.panel').html(search.el);
   },
 
-  showSearch: function() {
-    var search = new App.View.Search();
+  showSearch: function(url_question) {
+    var search = new App.View.Search({url_question: url_question});
     this.$('.panel').html(search.el);
+
+    if (url_question)
+      search.buildList(url_question);
   },
 
   showEdit: function(type, id) {
