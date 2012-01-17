@@ -24,11 +24,12 @@ App.View.SuggestInput = Backbone.View.extend({
     $(this.el).html(JST["templates/views/suggest-input"]());
 
     if (this.options.category && this.options.value) {
-      $(this.el).removeClass('add')
+      $(this.el).removeClass('add all')
                 .addClass(this.options.category)
                 .addClass('compact');
       this.$('input').val(this.options.value)
                      .data('value', this.options.data_value);
+      this.type = this.options.category;
       this.$('label').text(this.options.value);
     }
   },
@@ -57,7 +58,7 @@ App.View.SuggestInput = Backbone.View.extend({
     if ($(this.el).hasClass('compact'))
       return;
 
-    $(this.el).removeClass('hasFocus food food-group company').addClass('all');
+    $(this.el).removeClass('hasFocus food food-group company all');
 
     var $item = this.$('.drop-down .selected').removeClass('selected'); 
     if ($item.length > 0) {
@@ -68,6 +69,7 @@ App.View.SuggestInput = Backbone.View.extend({
                 .addClass(type);
       this.type = type;
     }
+
     this.$('.drop-down').html('').hide();
     this.stamp = 0;
 

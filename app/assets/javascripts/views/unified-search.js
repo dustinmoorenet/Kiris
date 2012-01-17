@@ -7,6 +7,8 @@ App.View.UnifiedSearch = Backbone.View.extend({
 
   className: 'app-view-unified-search',
 
+  MAX_INPUTS: 4,
+
   initialize: function() {
     this.render();
   },
@@ -19,9 +21,15 @@ App.View.UnifiedSearch = Backbone.View.extend({
     }
 
     // Add a blank input and focus on it 
-    var input = new App.View.SuggestInput();
-    this.$('.filter-plate').append(input.el);
-    input.onClick();
+    var count = this.$('.filter-plate .app-view-suggest-input').length;
+    if (count < this.MAX_INPUTS) {
+      var input = new App.View.SuggestInput();
+      this.$('.filter-plate').append(input.el);
+
+      // Single input gets expanded
+      if (count == 0)
+        input.onClick();
+    }
 
     this.trigger('searchInitiated');
   },
@@ -31,7 +39,8 @@ App.View.UnifiedSearch = Backbone.View.extend({
     var $inputs = this.$('.app-view-suggest-input:not(.destroyed)');
 
     if ($inputs.filter('.add').length == 0
-        && $inputs.find('input:visible').length == 0) {
+        && $inputs.find('input:visible').length == 0
+        && $inputs.length < this.MAX_INPUTS) {
       var input = new App.View.SuggestInput();
       this.$('.filter-plate').append(input.el);
       $inputs = this.$('.app-view-suggest-input:not(.destroyed)');
@@ -46,7 +55,10 @@ App.View.UnifiedSearch = Backbone.View.extend({
     var self = this;
 
     var params = this.options.url_question.split('&');
-    _.each(params, function(param) {
+    _.each(params, function(param, index) {
+
+      if (index >= self.MAX_INPUTS)
+        return;
 
       var items = param.split('=');
       if (items.length == 2) {
