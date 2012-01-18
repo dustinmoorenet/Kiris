@@ -1,4 +1,5 @@
 #!/bin/sh
+rvm use 1.9.2
 sudo /etc/init.d/httpd stop
 rvmsudo RAILS_ENV=production rake thinking_sphinx:stop
 sudo git pull
