@@ -21,9 +21,9 @@ App.View.UnifiedSearch = Backbone.View.extend({
     }
 
     // Add a blank input and focus on it 
-    var count = this.$('.filter-plate .app-view-suggest-input').length;
+    var count = this.$('.filter-plate .app-view-suggest-input-old').length;
     if (count < this.MAX_INPUTS) {
-      var input = new App.View.SuggestInput();
+      var input = new App.View.SuggestInputOld();
       this.$('.filter-plate').append(input.el);
 
       // Single input gets expanded
@@ -36,14 +36,14 @@ App.View.UnifiedSearch = Backbone.View.extend({
 
   appendAddButton: function() {
 
-    var $inputs = this.$('.app-view-suggest-input:not(.destroyed)');
+    var $inputs = this.$('.app-view-suggest-input-old:not(.destroyed)');
 
     if ($inputs.filter('.add').length == 0
         && $inputs.find('input:visible').length == 0
         && $inputs.length < this.MAX_INPUTS) {
-      var input = new App.View.SuggestInput();
+      var input = new App.View.SuggestInputOld();
       this.$('.filter-plate').append(input.el);
-      $inputs = this.$('.app-view-suggest-input:not(.destroyed)');
+      $inputs = this.$('.app-view-suggest-input-old:not(.destroyed)');
     }
 
     if ($inputs.length == 1 && $inputs.filter('.add').length == 1) {
@@ -83,7 +83,7 @@ App.View.UnifiedSearch = Backbone.View.extend({
           category = 'food-group';
         }
 
-        input = new App.View.SuggestInput({
+        input = new App.View.SuggestInputOld({
           category: category,
           value: value,
           data_value: data_value
@@ -98,7 +98,7 @@ App.View.UnifiedSearch = Backbone.View.extend({
   urlQuestion: function() {
     var params = [];
 
-    var $suggest_inputs = this.$('.app-view-suggest-input:not(.add,.destroyed)');
+    var $suggest_inputs = this.$('.app-view-suggest-input-old:not(.add,.destroyed)');
 
     $suggest_inputs.each(function() {
       var $suggest_input = $(this);

@@ -1,4 +1,4 @@
-App.View.SuggestInput = Backbone.View.extend({
+App.View.SuggestInputOld = Backbone.View.extend({
   events: {
     'item-selected .app-view-suggest-item': 'itemSelected',
     'keydown input': 'onKeyDown',
@@ -12,46 +12,25 @@ App.View.SuggestInput = Backbone.View.extend({
 
   tagName: 'div',
 
-  className: 'app-view-suggest-input all',
+  className: 'app-view-suggest-input-old add all',
 
   type: 'all',
-
-  categories: [],
 
   initialize: function() {
     this.render();
   },
 
   render: function() {
-    var $el = $(this.el);
+    $(this.el).html(JST["templates/views/suggest-input"]());
 
-    $el.html(JST["templates/views/suggest-input"]());
-
-    $el.addClass(this.className);
-
-    this.categories = $el.data('categories') || this.options.categories;
-
-    var category = $el.data('category') || this.options.category;
-
-    var text = typeof ($el.data('text')) != 'undefined' ? $el.data('text')
-             : this.options.text;
-
-    var value = typeof ($el.data('value')) != 'undefined' ? $el.data('value')
-              : this.options.value;
-
-
-    if (category) {
-      $el.removeClass('all')
-         .addClass(category);
-      this.type = category;
-    }
-
-    if (text) {
-      this.$('input').val(text);
-    }
-
-    if (value) {
-      this.$('input').data('value', value);
+    if (this.options.category && this.options.value) {
+      $(this.el).removeClass('add all')
+                .addClass(this.options.category)
+                .addClass('compact');
+      this.$('input').val(this.options.value)
+                     .data('value', this.options.data_value);
+      this.type = this.options.category;
+      this.$('label').text(this.options.value);
     }
   },
 
@@ -60,11 +39,26 @@ App.View.SuggestInput = Backbone.View.extend({
   },
 
   onClick: function() {
+    if ($(this.el).hasClass('add')) {
+      $(this.el).removeClass('add').find('label').html('');
+      this.$('input').focus();
+
+    } else if ($(this.el).hasClass('compact')) {
+      $(this.el).removeClass('compact')
+                .find('input').focus();
+
+      this.$('label').html('');
+
+    } else {
+      this.$('input').focus();
+    }
   },
 
   itemSelected: function() {
+    if ($(this.el).hasClass('compact'))
+      return;
 
-    $(this.el).removeClass('hasFocus all ' + this.categories.join(' '));
+    $(this.el).removeClass('hasFocus food food-group company all');
 
     var $item = this.$('.drop-down .selected').removeClass('selected'); 
     if ($item.length > 0) {
@@ -87,20 +81,19 @@ App.View.SuggestInput = Backbone.View.extend({
         var type = matches[1].toLowerCase();
         if (type == 'foodgroup')
           type = 'food-group';
-
-        if (_.indexOf(this.categories, type) == -1)
-          return;
-
         this.$('input').val(matches[2]);
         $(this.el).removeClass('all')
                   .addClass(type);
         this.type = type;
+        this.$('label').text(matches[2]);
 
       } else {
+        this.$('label').text(input_value);
         $(this.el).addClass(this.type);
       }
 
-      $(this.el).removeClass('hasFocus');
+      $(this.el).addClass('compact')
+                .removeClass('hasFocus');
 
     } else {
       this.destroy();
@@ -167,7 +160,7 @@ App.View.SuggestInput = Backbone.View.extend({
     if (!(key == 40 || key == 38 || key == 13)) {
       if (this.type != 'all') {
         this.type = 'all';
-        $(this.el).removeClass(this.categories.join(' ')).addClass('all');
+        $(this.el).removeClass('food food-group company').addClass('all');
       }
 
       var value = $.trim(this.$('input').val());
@@ -178,7 +171,7 @@ App.View.SuggestInput = Backbone.View.extend({
 
       var self = this;
       $.getJSON(App.url('search/unifiedSearch'),
-        {value: value, types: this.categories},
+        {value: value, types: ['food', 'food-group', 'company']},
         function(data) {
           if (stamp == self.stamp) {
             $dd.html('');

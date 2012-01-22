@@ -5,8 +5,8 @@
 $height: 30px;
 $icon-margin: $height - 16;
 
-.app-view-suggest-input {
-  @include border-radius(5px, 5px);
+.app-view-suggest-input-old {
+  @include border-radius(6px, 6px);
   background: rgba(255,255,255,.9);
   height: $height;
   line-height: $height;
@@ -46,11 +46,9 @@ $icon-margin: $height - 16;
     margin: 4px 0;
     float:left;
     background: rgba(0,0,0,0);
-    @include box-shadow(none);
 
     &:focus {
       outline: none;
-      @include box-shadow(none);
     }
   }
 

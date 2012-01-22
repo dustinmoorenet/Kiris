@@ -4,8 +4,8 @@
   <input id="name" value="<%= food.escape('name') %>" />
   <span class="name msg"></span><br />
 
-  <label for="company">Company</label>
-  <input id="company" value="<%= food.escape('company') %>" disabled />
+  <label class="div-label" for="company">Company</label>
+  <div id="company_id" data-category="company" data-value="<%= food.escape('company_id') %>" data-categories='["company"]'></div>
   <span class="company msg"></span><br />
 
   <label for="amount">Amount</label>

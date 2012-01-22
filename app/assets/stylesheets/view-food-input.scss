@@ -23,6 +23,13 @@
     font-size: 1em;
     text-transform: lowercase;
     color: rgba(0,0,0,.75);
+
+    &.div-label {
+      display: block;
+      float: left;
+      height: 30px;
+      line-height: 30px;
+    }
   }
 
   input,
@@ -77,4 +84,5 @@
   #amount {
     width: 75px;
   }
+
 }

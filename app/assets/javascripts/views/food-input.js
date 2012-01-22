@@ -23,6 +23,8 @@ App.View.FoodInput = Backbone.View.extend({
   render: function() {
     $(this.el).html(JST['templates/views/food-input']({food:this.model}));
 
+    var company = new App.View.SuggestInput({el: this.$('#company').get(0)})
+
     this.checkComplete();
   },
 
@@ -71,7 +73,7 @@ App.View.FoodInput = Backbone.View.extend({
   checkComplete: function() {
     var attrs = {
       name: this.$('#name').val(),
-      company: this.$('#company').val(),
+      company_id: this.$('#company_id input').data('value'),
       amount: this.$('#amount').val(),
       unit_id: this.$('#unit_id').val(),
       calories: this.$('#calories').val(),
