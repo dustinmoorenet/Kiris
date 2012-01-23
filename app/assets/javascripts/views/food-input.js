@@ -23,7 +23,7 @@ App.View.FoodInput = Backbone.View.extend({
   render: function() {
     $(this.el).html(JST['templates/views/food-input']({food:this.model}));
 
-    var company = new App.View.SuggestInput({el: this.$('#company').get(0)})
+    new App.View.SuggestInput({el: this.$('#company').get(0)});
 
     this.checkComplete();
   },
@@ -78,12 +78,12 @@ App.View.FoodInput = Backbone.View.extend({
       unit_id: this.$('#unit_id').val(),
       calories: this.$('#calories').val(),
       fat_calories: this.$('#fat_calories').val(),
-      food_group_id: this.$('#food_group_id').val(),
+      food_group_id: this.$('#food_group_id').val()
     }
 
     var outcome = this.model.set(attrs);
 
-    if (this.$('.error').length == 0)
+    if (this.$('.error').length === 0)
       this.$('.commit').removeClass('disabled').prop('disabled', false);
     else
       this.$('.commit').addClass('disabled').prop('disabled', true);
