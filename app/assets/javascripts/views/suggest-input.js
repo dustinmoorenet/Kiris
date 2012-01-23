@@ -67,8 +67,9 @@ App.View.SuggestInput = Backbone.View.extend({
     $(this.el).removeClass('hasFocus all ' + this.categories.join(' '));
 
     var $item = this.$('.drop-down .selected').removeClass('selected'); 
+    var type;
     if ($item.length > 0) {
-      var type = $item.data('type');
+      type = $item.data('type');
       this.$('input').val($item.text())
                      .data('value', $item.data('value'));
       $(this.el).removeClass('all')
@@ -80,11 +81,11 @@ App.View.SuggestInput = Backbone.View.extend({
     this.stamp = 0;
 
     var input_value = $.trim(this.$('input').val());
-    if (input_value != '') {
+    if (input_value !== '') {
       
       var matches = input_value.match(/^\s*(Company|Food|FoodGroup):\s*(.*)$/i);
       if (matches) {
-        var type = matches[1].toLowerCase();
+        type = matches[1].toLowerCase();
         if (type == 'foodgroup')
           type = 'food-group';
 
